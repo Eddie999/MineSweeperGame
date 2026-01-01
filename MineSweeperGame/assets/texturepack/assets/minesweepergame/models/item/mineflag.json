@@ -1,0 +1,11 @@
+{
+  "parent": "minesweepergame:block/mineflag",
+  "textures": {
+  	"foundation": "minecraft:block/black_concrete",
+  	"poleside": "minecraft:block/oak_log",
+  	"poletop": "minecraft:block/oak_log_top",
+  	"flag": "minecraft:block/red_wool",
+  	"particle": "minecraft:block/black_concrete",
+  	"missing": "minecraft:block/black_concrete"
+  }
+}

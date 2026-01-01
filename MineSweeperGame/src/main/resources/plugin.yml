@@ -1,0 +1,55 @@
+name: MineSweeperGame
+main: io.github.eddie999.minesweepergame.MineSweeperGame
+version: 1.0.0
+author: Einar Olsen
+api-version: 1.21
+api: [3.0.0]
+softdepend: [WorldEdit,WorldGuard,Vault,Essentials]
+commands:
+  minesweepergame:
+    description: MineSweeperGame commands, alias /ms
+    aliases: [ms]
+  mineweepergame.create:
+    description: Create a new minesweeper game
+  mineweepergame.help:
+    description: Use help <command> to get more info 
+  mineweepergame.list:
+    description: List your minesweeper games
+  mineweepergame.rename:
+    description: Renames the game in your main hand
+  mineweepergame.remove:
+    description: Remove minesweeper game field, player games are dropped with the rewards 
+  mineweepergame.power:
+    description: Changes the mine explosion power 
+  mineweepergame.starters:
+    description: Changes the number of starter mines 
+  mineweepergame.reward:
+    description: Add rewards to a game
+permissions:
+  minesweepergame.admin:
+    default: op
+    description: Gives admin access to all Minesweeper commands
+  minesweepergame.create:
+    default: op
+    description: Allows to create a minefield
+  minesweepergame.help:
+    default: true
+    description: Allows to view command help
+  minesweepergame.list:
+    default: true
+    description: Allows to list minefields
+  minesweepergame.rename:
+    default: true
+    description: Allows to rename owned minefield object
+  minesweepergame.power:
+    default: true
+    description: Allows to change minefield explosion power
+  minesweepergame.starters:
+    default: true
+    description: Allows to change the number of starter mines
+  minesweepergame.remove:
+    default: true
+    description: Allows to remove minefield
+  minesweepergame.reward:
+    default: true
+    description: Allows to add reward to minefield

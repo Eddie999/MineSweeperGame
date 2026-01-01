@@ -1,0 +1,117 @@
+{
+	"model": {
+		"type": "select",
+		"property": "custom_model_data",
+		"fallback": {
+			"type": "model",
+			"model": "block/stone"
+		},
+		"cases": [
+			{
+			    "when": "minesweepergame_mine0",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/mine0"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_mine1",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/mine1"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_mine2",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/mine2"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_mine3",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/mine3"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_mine4",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/mine4"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_mine5",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/mine5"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_mine6",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/mine6"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_mine7",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/mine7"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_mine8",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/mine8"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_mine9",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/mine9"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_minex",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/minex"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_minef",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/minef"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_mineflag",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/mineflag"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_minemarker0",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/minemarker0"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_minemarker1",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/minemarker1"
+			    }				
+			}
+		]
+	}
+}

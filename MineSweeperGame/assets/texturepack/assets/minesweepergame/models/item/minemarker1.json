@@ -1,0 +1,6 @@
+{
+  "parent": "minesweepergame:block/minemarker",
+  "textures": {
+    "texture": "minecraft:block/red_concrete"
+  }
+}

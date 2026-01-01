@@ -1,0 +1,6 @@
+{
+  "parent": "minesweepergame:block/plate",
+  "textures": {
+    "texture": "minesweepergame:block/mine9"
+  }
+}

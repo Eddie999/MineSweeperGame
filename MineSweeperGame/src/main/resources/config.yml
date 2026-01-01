@@ -1,0 +1,17 @@
+settings:
+   language: en-us
+   use-player-locale-language: true 	
+   mine-explosion-power: 4.0
+   disable-plugin-resourcepack-load: false
+   disable-worldguard-support: false
+   disable-vault-support: false
+   enable-broadcast: true
+   broadcast-all-worlds: false
+   broadcast-topten-only: false
+   field-max-size: 100
+   game-retries: 3
+   game-cooldown-time: 1800
+   game-starter-mines: 4
+   build-world-name: 
+     - minecraft.overworld
+     - minecraft.the_nether

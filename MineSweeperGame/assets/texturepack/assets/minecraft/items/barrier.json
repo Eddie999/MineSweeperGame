@@ -1,0 +1,47 @@
+{
+	"model": {
+		"type": "select",
+		"property": "custom_model_data",
+		"fallback": {
+			"type": "model",
+			"model": "block/barrier"
+		},
+		"cases": [
+			{
+			    "when": "minesweepergame_minestarter0",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/minestarter0"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_minestarter1",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/minestarter1"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_minestarter2",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/minestarter2"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_minestarter3",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/minestarter3"
+			    }				
+			},
+			{
+			    "when": "minesweepergame_minestarter4",
+			    "model": {
+				    "type": "model",
+				    "model": "minesweepergame:item/minestarter4"
+			    }				
+			}
+		]
+	}
+}

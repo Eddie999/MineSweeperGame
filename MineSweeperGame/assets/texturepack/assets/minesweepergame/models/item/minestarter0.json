@@ -1,0 +1,7 @@
+{
+  "parent": "minesweepergame:block/minestarter",
+  "textures": {
+    "end": "minecraft:block/red_concrete",
+    "side": "minesweepergame:block/minestarter_side0"
+  }
+}
