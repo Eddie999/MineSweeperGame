@@ -40,6 +40,7 @@ import io.github.eddie999.minesweepergame.utils.StringObject;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.md_5.bungee.api.ChatColor;
+import net.milkbowl.vault.economy.Economy;
 
 public class Game extends StringObject {	
 	private static final  ConcurrentMap<String, Game> games = new  ConcurrentHashMap<>();
@@ -87,7 +88,11 @@ public class Game extends StringObject {
 			if(starterCount == null) starterCount = 1; 
 		}
 		this.reward = reward;
-		if( VaultInterface.getEconomy().isEnabled()) this.reward.setCurrency(VaultInterface.getCurrencyName());
+		if( Bukkit.getServer().getPluginManager().getPlugin("Vault") != null) {
+			Economy econ = VaultInterface.getEconomy();
+			if( (econ != null) && (econ.isEnabled())) this.reward.setCurrency(VaultInterface.getCurrencyName());
+			else this.reward.setCurrency( "");
+		}
 		this.progress = new GameProgress(field.getMines(), field.getRows()*field.getCols());
 		Location displayLocation = block.getLocation().clone();
 		displayLocation.add(0, 1, 0);

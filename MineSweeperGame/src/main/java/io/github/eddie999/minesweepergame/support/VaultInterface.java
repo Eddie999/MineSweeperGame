@@ -11,17 +11,12 @@ import net.milkbowl.vault.economy.EconomyResponse;
 
 public interface VaultInterface {
 
-	public static boolean isInstalled() {
-		return (Bukkit.getServer().getPluginManager().getPlugin("Vault") != null);
-	}
-		
     public static Economy getEconomy() {
-        if(!isInstalled()) return null;
         RegisteredServiceProvider<Economy> rsp = Bukkit.getServer().getServicesManager().getRegistration(Economy.class);
         if(rsp == null) return null;
         return rsp.getProvider();
     }
-    
+   
     public static String getCurrencyName() {
     	Economy econ = getEconomy();
         if(econ == null) return null;        

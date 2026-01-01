@@ -18,8 +18,6 @@ import org.bukkit.scheduler.BukkitScheduler;
 import io.github.eddie999.minesweepergame.event.MineGameTickEvent;
 import io.github.eddie999.minesweepergame.game.Game;
 import io.github.eddie999.minesweepergame.game.GameCooldown;
-import io.github.eddie999.minesweepergame.support.VaultInterface;
-import io.github.eddie999.minesweepergame.support.WorldGuardInterface;
 import io.github.eddie999.minesweepergame.utils.CheckServer;
 import io.github.eddie999.minesweepergame.utils.Configs;
 import io.github.eddie999.minesweepergame.utils.PluginLanguages;
@@ -43,11 +41,11 @@ public class MineSweeperGame extends JavaPlugin{
 		
 		languages = new PluginLanguages(this, Configs.SETTINGS.get("language"), Configs.SETTINGS.getBoolean("use-player-locale-language"));
 		
-		if( !Configs.SETTINGS.getBoolean("disable-worldguard-support") && WorldGuardInterface.isInstalled()) {
+		if( !Configs.SETTINGS.getBoolean("disable-worldguard-support") && (Bukkit.getServer().getPluginManager().getPlugin("WorldGuard") != null)) {
 			this.getLogger().log(Level.INFO, "WorldGuard support is activated.");
 		} else this.getLogger().log(Level.INFO, "No WorldGuard support.");
 
-		if( !Configs.SETTINGS.getBoolean("disable-vault-support") && VaultInterface.isInstalled()) {
+		if( !Configs.SETTINGS.getBoolean("disable-vault-support") && (Bukkit.getServer().getPluginManager().getPlugin("Vault") != null)) {
 			this.getLogger().log(Level.INFO, "Vault support is activated.");
 		} else this.getLogger().log(Level.INFO, "No Vault support.");
 		

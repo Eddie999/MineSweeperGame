@@ -264,7 +264,7 @@ public class MineField implements Listener{
     			if(gift != null) {
     				if( gift instanceof Integer) {
     					Integer giftAmount = (Integer)gift;
-    					if(!Configs.SETTINGS.getBoolean("disable-vault-support")) {
+    					if(!Configs.SETTINGS.getBoolean("disable-vault-support") && (Bukkit.getServer().getPluginManager().getPlugin("Vault") != null)) {
     						VaultInterface.deposit(event.getPlayer(), giftAmount);
     					}
     				}else if( gift instanceof ItemStack) {

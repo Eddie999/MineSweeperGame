@@ -1,17 +1,29 @@
 settings:
+# Must use Minecraft language tag and match a JSON file in the lang folder.
    language: en-us
-   use-player-locale-language: true 	
+# Enable/disable multi language support, disabled only configured language is used.
+   use-player-locale-language: true 
+# Sets the default mine explosion power 	
    mine-explosion-power: 4.0
+# True disables the upload request from the plugin 
    disable-plugin-resourcepack-load: false
+# True disables Worldguard support
    disable-worldguard-support: false
+# True disables Vault support
    disable-vault-support: false
+# Enable/disables broadcast of game victories
    enable-broadcast: true
    broadcast-all-worlds: false
    broadcast-topten-only: false
+# Max rows and cols in a minefield
    field-max-size: 100
+# Number of retries/restarts before cooldown
    game-retries: 3
+# Cooldown time in seconds
    game-cooldown-time: 1800
+# Number of mines uncovered at the start of the game, can be configured individually
    game-starter-mines: 4
+# List of worlds that where games can be placed
    build-world-name: 
      - minecraft.overworld
      - minecraft.the_nether

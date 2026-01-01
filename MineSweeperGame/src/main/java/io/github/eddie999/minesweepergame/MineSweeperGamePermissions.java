@@ -3,6 +3,7 @@ package io.github.eddie999.minesweepergame;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import io.github.eddie999.minesweepergame.support.VaultInterface;
@@ -36,6 +37,7 @@ public class MineSweeperGamePermissions {
 	}
 	
 	protected boolean hasVault() {
+		if( Bukkit.getServer().getPluginManager().getPlugin("Vault") == null) return false;
 		return !Configs.SETTINGS.getBoolean("disable-vault-support") && (VaultInterface.getEconomy() != null);
 	}
 

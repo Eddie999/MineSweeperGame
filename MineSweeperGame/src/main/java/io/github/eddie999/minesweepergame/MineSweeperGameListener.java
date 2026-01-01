@@ -58,10 +58,12 @@ public class MineSweeperGameListener implements Listener {
 	
 	@EventHandler
 	public void onServerLoadEvent(ServerLoadEvent event) {
-		String currency = VaultInterface.getCurrencyName();
-		if( currency != null) {
-			Bukkit.getLogger().log(Level.INFO, "[MineSweeperGame] Currency: " + currency);
-			Game.setCurrencyName(currency);
+		if( Bukkit.getServer().getPluginManager().getPlugin("Vault") != null) {
+			String currency = VaultInterface.getCurrencyName();
+			if( currency != null) {
+				Bukkit.getLogger().log(Level.INFO, "[MineSweeperGame] Currency: " + currency);
+				Game.setCurrencyName(currency);
+			}
 		}
 	}
 	
@@ -153,7 +155,7 @@ public class MineSweeperGameListener implements Listener {
     	    		}
     	    		
 	    			GameArea area = new GameArea(loc, Integer.valueOf(rows), Integer.valueOf(cols));
-    	    		if(WorldGuardInterface.isInstalled()) {
+    	    		if(Bukkit.getServer().getPluginManager().getPlugin("WorldGuard") != null) {
     	    			if( !WorldGuardInterface.canBuild(player, area.getCorners())) {
     	    				player.sendMessage(String.format(Lang.translate(player, "messages.build.no-permission")));
     	    				event.setCancelled(true);
