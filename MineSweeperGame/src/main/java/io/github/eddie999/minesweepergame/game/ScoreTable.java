@@ -1,12 +1,16 @@
 package io.github.eddie999.minesweepergame.game;
 
 import java.util.List;
+import java.util.logging.Level;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Display;
 import org.bukkit.entity.TextDisplay;
+import org.bukkit.plugin.Plugin;
 
 import io.github.eddie999.minesweepergame.utils.Lang;
+import io.github.eddie999.minesweepergame.utils.PersistentStringStorage;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.md_5.bungee.api.ChatColor;
@@ -43,7 +47,10 @@ public class ScoreTable {
     
     public void remove() {
     	for(int i=0; i<2; i++) {
-    		if( entity[i] != null) entity[i].remove();
+    		if( entity[i] != null) {
+    			deleteEntityTag( entity[i]); 
+    			entity[i].remove();
+    		}
         	entity[i] = null;
     	}
     }    
@@ -69,6 +76,7 @@ public class ScoreTable {
         	entity.setBillboard(Display.Billboard.FIXED);
         	entity.setSeeThrough(false);
         	entity.setRotation( location.getYaw(), 0);
+        	if( !saveEntityTag( entity)) Bukkit.getLogger().log(Level.WARNING, "[MineSweeperGame] Failed to save 'ScoreTable' entity tag");
        	
         	this.entity[index] = entity;
     		if(index == 0) this.location = location;
@@ -96,6 +104,16 @@ public class ScoreTable {
     		entity[i].text(table);
      	}
 	}
+
+	private boolean saveEntityTag( Display entity) {
+		Plugin plugin = Bukkit.getPluginManager().getPlugin("MineSweeperGame");
+		return PersistentStringStorage.save(plugin, entity, "GameDisplay", entity.getUniqueId().toString());
+	}
+
+	private void deleteEntityTag( Display entity) {
+		Plugin plugin = Bukkit.getPluginManager().getPlugin("MineSweeperGame");
+		PersistentStringStorage.delete(plugin, entity, "GameDisplay");
+	}		
 	
     private Location getLocationFromBlock (Location location) {
         Location entityLocation = location.clone();

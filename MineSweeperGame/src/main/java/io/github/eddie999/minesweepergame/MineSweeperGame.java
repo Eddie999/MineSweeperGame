@@ -8,6 +8,7 @@ import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
+import org.bukkit.entity.ItemDisplay;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.command.CommandExecutor;
@@ -20,6 +21,7 @@ import io.github.eddie999.minesweepergame.game.Game;
 import io.github.eddie999.minesweepergame.game.GameCooldown;
 import io.github.eddie999.minesweepergame.utils.CheckServer;
 import io.github.eddie999.minesweepergame.utils.Configs;
+import io.github.eddie999.minesweepergame.utils.PersistentStringStorage;
 import io.github.eddie999.minesweepergame.utils.PluginLanguages;
 import io.github.eddie999.minesweepergame.utils.ResourcePack;
 
@@ -95,16 +97,29 @@ public class MineSweeperGame extends JavaPlugin{
 	@Override
     public void onDisable() {
 		stopTickTask(taskId);
+		this.getLogger().info("Saving games");
     	Game.saveGames();
     	Game.removeGames();
     	
-    	//Clean up undeleted TextDisplays
+    	//Clean up undeleted TextDisplays and ItemDisplays
     	List<World> worlds = this.getServer().getWorlds();
     	for(World world : worlds) {
-    		Collection<TextDisplay> collection = world.getEntitiesByClass(TextDisplay.class);
-    		for( TextDisplay display : collection) {
-    			if( display.text().toString().indexOf("MineSweeperGame") >= 0) display.remove();
+    		Collection<TextDisplay> textCollection = world.getEntitiesByClass(TextDisplay.class);
+    		for( TextDisplay display : textCollection) {
+    			String uuidStr = PersistentStringStorage.load(this, display, "GameDisplay");
+    			if(uuidStr != null) {
+    				this.getLogger().info("Removing undeleted TextDisplay" + uuidStr);
+    				display.remove();
+    			}
     		}    		
+    		Collection<ItemDisplay> itemCollection = world.getEntitiesByClass(ItemDisplay.class);
+       		for( ItemDisplay display : itemCollection) {
+    			String uuidStr = PersistentStringStorage.load(this, display, "GameDisplay");
+    			if(uuidStr != null) {
+    				this.getLogger().info("Removing undeleted ItemDisplay" + uuidStr);
+    				display.remove();
+    			}
+       		}
     	}
 	}
 	

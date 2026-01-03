@@ -1,9 +1,16 @@
 package io.github.eddie999.minesweepergame.game;
 
+import java.util.logging.Level;
+
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Display;
 import org.bukkit.entity.ItemDisplay;
 import org.bukkit.entity.ItemDisplay.ItemDisplayTransform;
+import org.bukkit.plugin.Plugin;
+
+import io.github.eddie999.minesweepergame.utils.PersistentStringStorage;
+
 import org.bukkit.entity.TextDisplay;
 
 import net.kyori.adventure.text.Component;
@@ -26,7 +33,10 @@ public class RewardDisplay {
     public void removeDisplay() {
     	if(this.entities == null) return;
     	for(int i=0; i<entities.length; i++) {
-    		if( entities[i] != null) entities[i].remove();
+    		if( entities[i] != null) {
+    			deleteEntityTag( entities[i]); 
+    			entities[i].remove();
+    		}
         	entities[i] = null;
     	}
     	this.entities = null;
@@ -46,6 +56,7 @@ public class RewardDisplay {
 	        	entity.setBillboard(Display.Billboard.FIXED);
 	        	entity.setSeeThrough(false);
 	        	entity.setRotation( entityLocation.getYaw(), 0);
+	        	if( !saveEntityTag( entity)) Bukkit.getLogger().log(Level.WARNING, "[MineSweeperGame] Failed to save 'RewardDisplay' entity tag");
 				this.entities[0] = entity;
 			});
 	 		float yaw = entityLocation.getYaw() + 180F;
@@ -57,6 +68,7 @@ public class RewardDisplay {
 	        	entity.setBillboard(Display.Billboard.FIXED);
 	        	entity.setSeeThrough(false);
 	        	entity.setRotation( entityLocation.getYaw(), 0);
+	        	if( !saveEntityTag( entity)) Bukkit.getLogger().log(Level.WARNING, "[MineSweeperGame] Failed to save 'RewardDisplay' entity tag");
 				this.entities[1] = entity;
 			});
 		}else if(reward.size()>0) {
@@ -66,6 +78,7 @@ public class RewardDisplay {
 				entity.setItemDisplayTransform(ItemDisplayTransform.GUI);
 	        	entity.setBillboard(Display.Billboard.FIXED);
 	        	entity.setRotation( entityLocation.getYaw(), 0);
+	        	if( !saveEntityTag( entity)) Bukkit.getLogger().log(Level.WARNING, "[MineSweeperGame] Failed to save 'RewardDisplay' entity tag");
 				this.entities[0] = entity;
 			});
 			TextComponent amount = Component.text(ChatColor.BLUE + String.valueOf(reward.get(0).getAmount()));
@@ -76,6 +89,7 @@ public class RewardDisplay {
 	        	entity.setBillboard(Display.Billboard.FIXED);
 	        	entity.setSeeThrough(false);
 	        	entity.setRotation( entityLocation.getYaw(), 0);
+	        	if( !saveEntityTag( entity)) Bukkit.getLogger().log(Level.WARNING, "[MineSweeperGame] Failed to save 'RewardDisplay' entity tag");
 				this.entities[1] = entity;
 			});
 	 		float yaw = entityLocation.getYaw() + 180F;
@@ -87,10 +101,21 @@ public class RewardDisplay {
 	        	entity.setBillboard(Display.Billboard.FIXED);
 	        	entity.setSeeThrough(false);
 	        	entity.setRotation( entityLocation.getYaw(), 0);
+	        	if( !saveEntityTag( entity)) Bukkit.getLogger().log(Level.WARNING, "[MineSweeperGame] Failed to save 'RewardDisplay' entity tag");
 				this.entities[2] = entity;
 			});			
 		}
 	}
+	
+	private boolean saveEntityTag( Display entity) {
+		Plugin plugin = Bukkit.getPluginManager().getPlugin("MineSweeperGame");
+		return PersistentStringStorage.save(plugin, entity, "GameDisplay", entity.getUniqueId().toString());
+	}
+
+	private void deleteEntityTag( Display entity) {
+		Plugin plugin = Bukkit.getPluginManager().getPlugin("MineSweeperGame");
+		PersistentStringStorage.delete(plugin, entity, "GameDisplay");
+	}	
 	
     private Location getLocationFromBlock (Location location) {
         Location entityLocation = location.clone();

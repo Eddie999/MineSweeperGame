@@ -8,9 +8,9 @@ settings:
 # True disables the upload request from the plugin 
    disable-plugin-resourcepack-load: false
 # True disables Worldguard support
-   disable-worldguard-support: false
+   disable-worldguard-support: true
 # True disables Vault support
-   disable-vault-support: false
+   disable-vault-support: true
 # Enable/disables broadcast of game victories
    enable-broadcast: true
    broadcast-all-worlds: false

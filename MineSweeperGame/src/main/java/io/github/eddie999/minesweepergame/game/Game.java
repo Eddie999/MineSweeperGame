@@ -62,6 +62,7 @@ public class Game extends StringObject {
 	private RewardDisplay display;
 	private boolean playerOutsideArea;
 	private RealtimeTimer playerTimeout;
+	private long chunkKey;
 	
 	public Game(UUID owner, String name, Boolean admin) {
 		this.owner = owner;
@@ -100,6 +101,7 @@ public class Game extends StringObject {
 		createBoard();
 		createScoreTable();
 		displayReward();
+		this.chunkKey = block.getLocation().getChunk().getChunkKey();
 		this.playerTimeout = new RealtimeTimer();
 		games.put(id, this);
 		
@@ -115,7 +117,7 @@ public class Game extends StringObject {
 	}
 	
 	public boolean hasChunk(Chunk chunk) {
-		if( block.getLocation().getChunk().equals(chunk)) return true;
+		if( chunkKey == chunk.getChunkKey()) return true;
 		return false;
 	}
 		
