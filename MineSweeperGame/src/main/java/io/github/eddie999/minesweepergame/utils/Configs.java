@@ -2,6 +2,7 @@ package io.github.eddie999.minesweepergame.utils;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 
@@ -66,8 +67,11 @@ public enum Configs {
 
 	@SuppressWarnings("unchecked")
 	public List<String> getStringList(String key) {
-		if(getObject(key) instanceof List) {
-			return (List<String>) getObject(key);
+		Object obj;
+		if((obj=getObject(key)) instanceof List) {
+			List<?> list = (List<?>) obj;
+			if( list.get(0) instanceof String)
+			return (List<String>) obj;
 		}
 		return null;
 	}	

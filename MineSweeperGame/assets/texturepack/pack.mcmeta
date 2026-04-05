@@ -1,6 +1,9 @@
 {
     "pack": {
+        "description": "MineSweeper TexturePack",
         "pack_format": 64,
-        "description": "MineSweeper TexturePack for 1.21.8"
+        "min_format": 64,
+        "max_format": 84.0,
+        "supported_formats": [64,84.0]
     }
 }

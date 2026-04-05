@@ -9,8 +9,10 @@ import net.kyori.adventure.resource.ResourcePackRequest;
 import net.kyori.adventure.text.Component;
 
 public class ResourcePack {
-	public static String resourceUri = "https://download.mc-packs.net/pack/7a80c833ff39044dee04f120bb35399ac7e2e1f1.zip";
-	public static String resourceHash = "7a80c833ff39044dee04f120bb35399ac7e2e1f1";
+//	public static String resourceUri = "https://download.mc-packs.net/pack/7a80c833ff39044dee04f120bb35399ac7e2e1f1.zip";
+//	public static String resourceHash = "7a80c833ff39044dee04f120bb35399ac7e2e1f1";
+	public static String resourceUri = "https://download.mc-packs.net/pack/090da1bfd1c0244a9fa13cd5d02afb7d86ea2543.zip";
+	public static String resourceHash = "090da1bfd1c0244a9fa13cd5d02afb7d86ea2543";
 
 	public static void sendResourcePacks(Player player) {
 		ResourcePackInfo packInfo = ResourcePackInfo.resourcePackInfo()
